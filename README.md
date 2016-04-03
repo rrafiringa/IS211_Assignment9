@@ -53,7 +53,8 @@ like?
 
 3. Write a script called “apple_stock.py” that will load this URL, parse it using BeautiulSoup, and output
 the close price and date for all the dates shown on the page
-Part III ­ Weather Data
+
+## Part III ­ Weather Data
 As the last part of the assignment, we will scrape some weather data from the Weather Underground. For
 example, we will scrape the Monthly temperature (actual and forecasted) for January 2015, which is located
 here: http://www.wunderground.com/history/airport/KNYC/2015/4/1/MonthlyHistory.html. Write a script called
