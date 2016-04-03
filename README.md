@@ -47,6 +47,7 @@ finance.
 2. Type in Apples stock symbol, AAPL, into the search bar. This brings up AAPL’s summary page.
 From here, click on the historical prices link in the sidebar, which should load up a URL like
 http://finance.yahoo.com/q/hp?s=AAPL+Historical+Prices
+
 a. Food for thought: if you wanted to scrape data for another stock, what would the URL look
 like?
 
