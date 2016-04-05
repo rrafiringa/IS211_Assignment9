@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- Coding: utf-8 -*-
 
-# Part I:
+"""
+Part I: Football Stats
+"""
 
 from urlfetch import *
 
@@ -10,8 +12,8 @@ HTML = fetch_url(URL)
 HATTR = 'th > a'
 DATTR = 'tr[class^="row"]'
 HTDATA = DataFinder(HTML)
-HEADER = HTDATA.html_css_search(HATTR)
-DATA = HTDATA.html_css_search(DATTR, ',')
+HEADER = HTDATA.data_css_search(HATTR)
+DATA = HTDATA.data_css_search(DATTR, ',')
 TABLE = [dict(zip(HEADER, ROW.split(','))) for ROW in DATA]
 HSEP = '---------------------------------------------------'
 print '{:^20}|{:^5}|{:^12}|{:^10}'.format('Player', 'Team', 'Touchdown', 'Position')

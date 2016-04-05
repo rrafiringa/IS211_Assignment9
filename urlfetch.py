@@ -62,16 +62,24 @@ class DataFinder(object):
             return self.data
         return self.has_data
 
-    def html_get_node(self, tag, attrs):
+    def get_tag_by_attr(self, tag, attrs={}):
         """
         Return a portion of the HTML code
         :param tag: (String) HTML tag
         :param attrs: (Dict) HTML tag attributes
-        :return: (Object) Tag object
+        :return: (List) List of Tag objects
         """
         return self.soup.find_all(tag, attrs)
 
-    def html_tag_search(self, tag, props, sep=''):
+    def get_tag_by_css(self, token):
+        """
+        Get tag by CSS attribute
+        :param token: CSS attribute
+        :return: (List) List of Tag objects
+        """
+        return self.soup.select(token)
+
+    def data_tag_search(self, tag, props, sep=''):
         """
         Find tags by tag name and properties
         :param tag: (String) Tag name
@@ -80,9 +88,9 @@ class DataFinder(object):
         :return: (List) Data columns
         """
         data = self.soup.find_all(tag, props)
-        return [row.get_text(sep, strip=True) for row in data]
+        return [str(row.get_text(sep, strip=True)) for row in data]
 
-    def html_css_search(self, attr, sep=''):
+    def data_css_search(self, attr, sep=''):
         """
         Find tags by CSS attributes
         :param attr: (String) CSS attribute
@@ -90,9 +98,9 @@ class DataFinder(object):
         :return: (List) Data columns
         """
         data = self.soup.select(attr)
-        return [row.get_text(sep, strip=True) for row in data]
+        return [str(row.get_text(sep, strip=True)) for row in data]
 
-    def html_func_search(self, func, sep=''):
+    def data_func_search(self, func, sep=''):
         """
         Leverages a boolean function to match tags.
         :param func: (Function) Filtering function
@@ -100,7 +108,7 @@ class DataFinder(object):
         :return: (List) Data columns
         """
         data = self.soup(func)
-        return [row.get_text(sep, strip=True) for row in data]
+        return [str(row.get_text(sep, strip=True)) for row in data]
 
     def to_csv(self, file_name, mode='ab'):
         """
